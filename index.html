@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kill Bill Trivia</title>
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		/>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
+	<body>
+		<h1 class="display-1">Kill Bill Trivia</h1>
+		<div class="container">
+			<h3 class="display-3" id="timer">30 Seconds</h3>
+			<div id="question"></div>
+			<div id="image"></div>
+			<div id="answer"></div>
+			<div class="list"></div>
+			<div id="correct"></div>
+			<div id="incorrect"></div>
+			<div id="unanswered"></div>
+
+			<button
+				type="button"
+				class="btn btn-primary"
+				id="start"
+				data-toggle="button"
+				aria-pressed="false"
+				autocomplete="off"
+			>
+				Start Game
+			</button>
+			<button
+				type="button"
+				class="btn btn-primary"
+				id="retry"
+				data-toggle="button"
+				aria-pressed="false"
+				autocomplete="off"
+			>
+				Retry
+			</button>
+		</div>
+		<script
+			type="text/javascript"
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+		></script>
+		<script
+			type="text/javascript"
+			src="./assets/javascript/app.js"
+		></script>
+	</body>
+</html>

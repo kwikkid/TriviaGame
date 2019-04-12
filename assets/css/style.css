@@ -1,0 +1,11 @@
+.display-1 {
+	text-align: center;
+}
+
+.container {
+	text-align: center;
+}
+
+#retry {
+	display: none;
+}
