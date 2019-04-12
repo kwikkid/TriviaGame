@@ -7,6 +7,7 @@ $(document).ready(function() {
     var incorrectGuesses = 0;
     var unanswered = 0;
     var time = 30;
+    var userGuess;
 
     var questionsArray = [
         {
@@ -70,6 +71,7 @@ $(document).ready(function() {
     ];
     $(document).on("click", "#start", startQuiz);
     function startQuiz() {
+        time = 30;
         $(".list-group-item").remove();
         $("#correct").empty();
         $("#incorrect").empty();
@@ -83,32 +85,46 @@ $(document).ready(function() {
     }
 
     function showImage() {
+        console.log("inside showImage");
         $(".list-group-item").remove();
         var imageDisplayed = questionsArray[count].image;
         console.log(questionsArray[count].image);
         $("#image").html("<img src=" + imageDisplayed + " width='400px'>");
-        setTimeout(checkAnswer, 50);
+        setTimeout(checkAnswer, 1000);
     }
+    $(document).on("click", "#test", function() {
+        console.log("inside on click: ");
+        userGuess = $(this).text();
+        console.log("userGuess after click: " + userGuess);
+    });
 
     function nextQuestion() {
+        clearInterval(intervalId);
+        intervalId = setInterval(decrement, 1000);
         var question = questionsArray[count];
         $("#question").html(question.question);
         for (var i = 0; i < question.answers.length; i++) {
             $(".list").append(
-                "<button type='button' class='list-group-item list-group-item-action'>" +
+                "<button type='button' id='test' class='choice list-group-item list-group-item-action'>" +
                     question.answers[i] +
                     "</button>"
             );
         }
         $(".list-group-item").click(showImage);
     }
-
+    function decrement() {
+        time--;
+        $("#timer").html("<h2>" + time + " seconds left" + "</h2>");
+        if (time <= 0) {
+            clearInterval(intervalId);
+            endGame();
+        }
+    }
     function checkAnswer() {
         $("#image").empty();
+        console.log(typeof userGuess);
         console.log(count);
         console.log("answer: " + questionsArray[count].answer);
-        var userGuess = $(this).text();
-        console.log("userGuess: " + userGuess);
         //add and display some text here telling the user if they got it right or wrong. show the answer//
         if (userGuess === questionsArray[count].answer) correctGuesses++;
         else if (userGuess === null) unansweredGuesses++;
@@ -123,6 +139,10 @@ $(document).ready(function() {
 
     function endGame() {
         $("#question").empty();
+        $(".list").empty();
+        unanswered =
+            questionsArray.length - (incorrectGuesses + correctGuesses);
+        console.log(unanswered);
         $("#result").text("Results:");
         $("#correct").text("correct guesses: " + correctGuesses);
         $("#incorrect").text("incorrect guesses: " + incorrectGuesses);
@@ -131,32 +151,3 @@ $(document).ready(function() {
         $("#retry").click(startQuiz);
     }
 });
-// function checkAnswer() {
-//  if questions.answer
-// }
-
-// function displayQuestion() {
-// }
-
-//create a question object that contains:
-// question
-// possible answers
-// answer
-// img to display
-// variables:
-// startQuiz boolean
-// correct answers
-// incorrect answers
-// unanswered
-
-// function: start
-// function:
-
-//display the answers as ul and li elements//
-
-//create a function that checks the answer
-//if userChoice click event is answer, increase correct answers++.
-//if userChoice click even is not answer, increase incorrect answers++
-//else userChoice is none, increase unanswered++
-
-//button
