@@ -31,7 +31,7 @@ $(document).ready(function() {
                 "Sofie Fatale",
                 "O-Ren Ishii"
             ],
-            answer: "O-ren Ishii",
+            answer: "O-Ren Ishii",
             image: "./assets/images/oren.gif"
         },
         {
@@ -123,7 +123,7 @@ $(document).ready(function() {
     function decrement() {
         time--;
         $("#timer").html("<h2>" + time + " seconds left" + "</h2>");
-        if (time <= 0) {
+        if (time <= 0 || count === questionsArray.length) {
             clearInterval(intervalId);
             endGame();
         }
@@ -146,6 +146,7 @@ $(document).ready(function() {
     }
 
     function endGame() {
+        $("#timer").empty();
         $("#question").empty();
         $(".list").empty();
         unanswered =
