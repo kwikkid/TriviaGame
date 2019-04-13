@@ -89,13 +89,21 @@ $(document).ready(function() {
         $(".list-group-item").remove();
         var imageDisplayed = questionsArray[count].image;
         console.log(questionsArray[count].image);
-        $("#image").html("<img src=" + imageDisplayed + " width='400px'>");
-        setTimeout(checkAnswer, 1000);
+        $("#image").html("<img src=" + imageDisplayed + " width='300px'>");
+        setTimeout(checkAnswer, 3000);
     }
     $(document).on("click", "#test", function() {
         console.log("inside on click: ");
         userGuess = $(this).text();
-        console.log("userGuess after click: " + userGuess);
+        // console.log("userGuess after click: " + userGuess);
+        var display = $("<p>");
+        display.text(
+            "you guessed " +
+                userGuess +
+                " the answer was " +
+                questionsArray[count].answer
+        );
+        $("#image").append(display);
     });
 
     function nextQuestion() {

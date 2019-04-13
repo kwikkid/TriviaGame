@@ -1,3 +1,14 @@
+body {
+	background-image: url("../images/background.jpg");
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: "Oswald", sans-serif;
+}
+
 .display-1 {
 	text-align: center;
 }
@@ -8,4 +19,14 @@
 
 #retry {
 	display: none;
+}
+
+p,
+.list,
+#result,
+#correct,
+#incorrect,
+#unanswered {
+	color: red;
+	font-family: "Anton", sans-serif;
 }
